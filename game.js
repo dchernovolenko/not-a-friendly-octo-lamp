@@ -1,6 +1,8 @@
 var canvas = document.getElementById("thing");
 var clear = document.getElementById("clear");
 var stopv = document.getElementById("Stop");
+var grow = document.getElementById("grow");
+var screen = document.getElementById("screen");
 var ctx = canvas.getContext("2d");
 var r = 0;
 var t = 0;
@@ -29,7 +31,7 @@ var drawcirc = function(){
     if(z == 0){
         r--
     }
-    if(r == 0){
+    if(r == 1){
         z = 1
     }
     requestID = window.requestAnimationFrame(drawcirc);
@@ -62,33 +64,18 @@ var clearcan = function(){
 var clearfull = function(){
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     r = 0;
+    x = Math.random()*500;
+    y = Math.random()*500;
+    dx = 5;
+    dy = 5;
 }
 var stop = function(){
     window.cancelAnimationFrame (requestID)
 }
 
-var draw = function(){
-    if( t == 0) {
-        clearfull()
-        drawcirc();
-    }
-    else{
-        clearfull()
-       screensaver();
-    }
-}
 
-var togglefunc = function(){
-    if( t == 0){
-        t = 1;
-        console.log(t);
-    }
-    else {
-        t= 0;
-    }
-}
 
 stopv.addEventListener("click", stop);
 clear.addEventListener("click", clearfull);
-canvas.addEventListener("click", draw);
-toggle.addEventListener("click", togglefunc);
+grow.addEventListener("click", drawcirc);
+screen.addEventListener("click", screensaver);
