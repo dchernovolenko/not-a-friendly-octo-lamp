@@ -42,7 +42,8 @@ var screensaver = function(){
     clearcan()
     ctx.fill();
     ctx.stroke();
-    if(x>480 || x<20){
+    console.log(x);
+    if(x>580 || x<20){
         dx = -dx;
     }
     if(y>480 || y<20){
